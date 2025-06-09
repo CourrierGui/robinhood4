@@ -172,6 +172,8 @@ source_from_uri(const char *uri, const char *dump_file, uint64_t max_changelog)
     (void) username;
     if (strcmp(raw_uri->path, "file") == 0) {
         source = source_from_file_uri(name, source_from_file);
+    } else if (strcmp(raw_uri->path, "fanotify") == 0) {
+        source = source_from_fanotify();
     } else if (strcmp(raw_uri->path, "lustre") == 0) {
 #ifdef HAVE_LUSTRE
         source = source_from_lustre_changelog(name, username, dump_file,

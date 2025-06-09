@@ -122,5 +122,6 @@ subdir('rbh-info')
 if build_lustre
     subdir('rbh-undelete')
 endif
+subdir('rbh-diff')
 subdir('retention')
 subdir('packaging')

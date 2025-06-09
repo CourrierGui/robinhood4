@@ -44,6 +44,6 @@ struct source *
 source_from_hestia_file(FILE *file);
 
 struct source *
-source_from_fanotify(void);
+source_from_fanotify(const char *path);
 
 #endif

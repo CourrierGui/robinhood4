@@ -42,6 +42,14 @@ if libhestia.found()
     add_project_arguments(['-DHAVE_HESTIA',], language: 'c')
 endif
 
+if get_option('fanotify').enabled()
+    extra_sources += [
+        'src/sources/fanotify/debug.c',
+        'src/sources/fanotify/source.c',
+    ]
+    extra_args += ['-DHAVE_FANOTIFY']
+endif
+
 includes = include_directories('.', 'include')
 
 fsevents_lib = static_library(
@@ -54,7 +62,6 @@ fsevents_lib = static_library(
         'src/enricher.c',
         'src/enrichers/posix/posix.c',
         'src/enrichers/posix/retention.c',
-        'src/sources/fanotify/source.c',
         'src/sources/file.c',
         'src/sources/hestia.c',
         'src/sources/utils.c',

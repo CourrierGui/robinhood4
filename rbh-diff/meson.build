@@ -12,6 +12,7 @@ executable(
     'rbh-diff',
     sources: [
         'rbh-diff.c',
+        'src/diff.c',
     ],
     dependencies: librobinhood_dep,
     include_directories: rbhdiff_include,

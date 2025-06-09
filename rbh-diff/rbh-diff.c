@@ -81,9 +81,11 @@ main(int argc, char **argv)
     const struct option long_options[] = {
         { .name = "help",   .val = 'h' },
         { .name = "config", .val = 'c' },
+        { .name = "checksum", .val = 'C' },
         { },
     };
     struct rbh_backend **backends;
+    bool checksum = false;
     char c;
     int rc;
 
@@ -91,7 +93,7 @@ main(int argc, char **argv)
     if (rc)
         error(EXIT_FAILURE, errno, "failed to open configuration file");
 
-    while ((c = getopt_long(argc, argv, "c:h", long_options,
+    while ((c = getopt_long(argc, argv, "c:hC", long_options,
                             NULL)) != -1) {
         switch (c) {
         case 'c':
@@ -100,6 +102,9 @@ main(int argc, char **argv)
         case 'h':
             usage();
             return 0;
+        case 'C':
+            checksum = true;
+            break;
         case '?':
         default:
             /* getopt_long() prints meaningful error messages itself */
@@ -115,6 +120,8 @@ main(int argc, char **argv)
 
     backends = open_backends(argc, argv);
     assert(backends);
+
+    diff(argv, backends, argc, checksum);
 
     close_backends(backends, argc);
 

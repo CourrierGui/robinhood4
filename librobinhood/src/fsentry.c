@@ -159,6 +159,9 @@ rbh_fsentry_find_ns_xattr(const struct rbh_fsentry *entry,
     return rbh_map_find(&entry->xattrs.ns, key_to_find);
 }
 
+// FIXME this is wrong
+// - no error
+// - rbh_ prefix
 const char *
 fsentry_relative_path(const struct rbh_fsentry *fsentry)
 {

@@ -243,6 +243,8 @@ fsentry_print_ls_dils(FILE *file, const struct rbh_fsentry *fsentry)
                         fsentry->mask & RBH_FP_STATX ? fsentry->statx : NULL);
 
     fprintf(file, " %s", rbh_fsentry_find_ns_xattr(fsentry, "path")->string);
+    // TODO
+    // fprintf(file, " %s", rbh_fsentry_path(fsentry));
 
     if (fsentry->mask & RBH_FP_SYMLINK)
         fprintf(file, " -> %s", fsentry->symlink);

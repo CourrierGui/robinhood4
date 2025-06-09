@@ -20,4 +20,7 @@
 
 #include <robinhood/config.h>
 
+void
+diff(char **uris, struct rbh_backend **backends, size_t count, bool checksum);
+
 #endif

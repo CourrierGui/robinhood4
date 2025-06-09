@@ -170,6 +170,9 @@ rbh_fsentry_find_inode_xattr(const struct rbh_fsentry *entry, const char *key);
 const struct rbh_value *
 rbh_fsentry_find_ns_xattr(const struct rbh_fsentry *entry, const char *key);
 
+const char *
+rbh_fsentry_path(const struct rbh_fsentry *fsentry);
+
 /**
  * Retrieve an entry's path relative to the mount point used to sync the mirror
  * system.

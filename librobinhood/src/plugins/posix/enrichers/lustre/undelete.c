@@ -49,7 +49,7 @@ lhsm_rebind(const struct lu_fid *old_id, const struct lu_fid *new_id,
         goto out_snprintf_error;
 
     rc = snprintf(cmd_line, sizeof(cmd_line),
-                  "lhsmtool_posix --archive=%u -p /mnt/hsm --rebind %s %s %s",
+                  "lhsmtool_posix --archive=%u -p /tmp/hsm --rebind %s %s %s",
                   hsm_archive_id, old_fid_str, new_fid_str, dest);
     if (rc < 0 || rc >= sizeof(cmd_line))
         goto out_snprintf_error;
